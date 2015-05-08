@@ -9,6 +9,7 @@
 <h1>Hello, world!</h1>
 
 <h3>Search for your favourite movies here. ;)</h3>
+<h5>The user ratings are calculated using IMDB and Rotten Tomatoes data.</h5>
 
 <form method="GET" action="/search">
 	<div class="form-group">
@@ -22,6 +23,13 @@
 <img src="{{ movieData.posterURL }}">
 <br>
 <h4>{{ movieData.title }} ({{ movieData.year }})</h4>
+
+{% if 'userrating' in movieData %}
+<p>User Rating: {{ movieData.userrating }}% users liked it</p>
+{% else %}
+<p>Ratings not available.</p>
+{% endif %}
+
 <h5>Genre: {% for genre in movieData.genres %} {{ genre }} {% endfor %}</h5>
 {{ movieData.plot }}<br>
 Released in: {{movieData.language}}

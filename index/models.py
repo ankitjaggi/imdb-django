@@ -26,13 +26,16 @@ class Movie(models.Model):
 		if(moviedict['Response'] == 'True'):
 			self.movieData['title'] = moviedict['Title']
 			self.movieData['year'] = moviedict['Year']
-			self.movieData['imdbRating'] = moviedict['imdbRating']
+			if moviedict['imdbRating'] != "N/A":
+				self.movieData['userrating'] = round(float(moviedict['imdbRating']) * 10)
+				if moviedict['tomatoUserRating'] != "N/A":
+					self.movieData['userrating'] = round((float(moviedict['imdbRating']) + (float(moviedict['tomatoUserRating']) * 2)) * 5)
 			self.movieData['imdbID'] = moviedict['imdbID']
 			self.movieData['language'] = moviedict['Language']
 			self.movieData['plot'] = moviedict['Plot']
 			self.movieData['genres'] = moviedict['Genre'].split(',')
 			self.movieData['posterURL'] = self.generateImageLink(moviedict['imdbID'])
-		
+			
 		self.movieData['response'] = moviedict['Response']
 		return self.movieData
 
