@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Movie Search</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//bootswatch.com/superhero/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+<h1>Hello, world!</h1>
+
+<h3>Search for your favourite movies here. ;)</h3>
+
+<form method="GET" action="/search">
+	<div class="form-group">
+<input class="form-control" type="text" name="q">
+</div>
+<input type="submit" class="btn btn-default">
+<br><br>
+{% if search == True %}
+
+{% if movieData.response == "True" %}
+<img src="{{ movieData.posterURL }}">
+<br>
+<h4>{{ movieData.title }} ({{ movieData.year }})</h4>
+<h5>Genre: {% for genre in movieData.genres %} {{ genre }} {% endfor %}</h5>
+{{ movieData.plot }}<br>
+Released in: {{movieData.language}}
+{% else %}
+<p>Movie not found.</p>
+{% endif %}
+
+
+{% endif %}
+</div>
+</body>
+</html>
