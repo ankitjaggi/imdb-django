@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <html>
 <head>
 	<title>Movie Search</title>
@@ -22,10 +23,10 @@
 {% if movieData.response == "True" %}
 <img src="{{ movieData.posterURL }}">
 <br>
-<h4>{{ movieData.title }} ({{ movieData.year }})</h4>
+<h3>{{ movieData.title }} ({{ movieData.year }})</h3>
 
 {% if 'userrating' in movieData %}
-<p>User Rating: {{ movieData.userrating }}% users liked it</p>
+<p><img src="{% static "assets/images/star.ico" %}" width="40" height="40">&nbsp;&nbsp;{{ movieData.userrating }}% users liked it</p>
 {% else %}
 <p>Ratings not available.</p>
 {% endif %}
