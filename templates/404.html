@@ -1,0 +1,38 @@
+{% load static from staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<title>404 Not Found</title>
+<style>
+body
+{
+	font-family: 'Roboto', sans-serif;
+}
+#error-message {
+  margin-top: 80px;
+  font-size: 130px;
+  padding-bottom: 225px;
+  background: url({% static 'images/error_message.jpg' %}) bottom center no-repeat;
+  width: 100%;
+  text-align: center
+}
+#error-page #back_button {
+  display: block;
+  text-align: right;
+  color: #bababa;
+  text-decoration: underline;
+  font-size: 15px;
+  }
+</style>
+</head>
+<body>
+	<div class="container">
+<section id="error-page">
+
+		<a id="back_button" href="//imdb-django.herokuapp.com">Back to homepage</a>
+		<div id="error-message">ERROR #404</div>
+	</section>
+</div>
+</body>
+</html>
