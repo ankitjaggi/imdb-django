@@ -21,3 +21,5 @@ urlpatterns = [
     url(r'', include('index.urls')),
     url(r'^search/', include('index.urls')),
 ]
+
+handler404 = 'mysite.views.custom_404'
